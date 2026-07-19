@@ -1,4 +1,4 @@
 import os
 
 
-print(os.path.abspath('functions'))
+print('ismu.py'[-2:])
