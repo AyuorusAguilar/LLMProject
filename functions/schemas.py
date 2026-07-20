@@ -2,13 +2,14 @@ schema_get_files_info = {
     "type": "function",
     "function": {
         "name": "get_files_info",
-        "description": "Lists files in a specified directory relative to the working directory, providing file size and directory status",
+        "description": "Lists files in a specified directory, providing file size and directory status, similar to ls in bash. It does not execute the files",
         "parameters": {
             "type": "object",
+            "required": ["directory"],
             "properties": {
                 "directory": {
                     "type": "string",
-                    "description": "Directory path to list files from, relative to the working directory (default is the working directory itself)",
+                    "description": "Directory path to list files from (default is the working directory itself)",
                 },
             },
         },
@@ -18,13 +19,14 @@ schema_get_file_content = {
     "type": "function",
     "function": {
         "name": "get_file_content",
-        "description": "Returns the first 10,000 characters of a text file",
+        "description": "Returns the first 10,000 characters of the content of a file",
         "parameters": {
             "type": "object",
+            "required": ["file_path"],
             "properties": {
                 "file_path": {
                     "type": "string",
-                    "description": "file_path path to the file you'd like to read",
+                    "description": "Path to the file you'd like to rea e.g. 'content.txt' or 'pkg/python.py'",
                 },
             },
         },
@@ -34,17 +36,18 @@ schema_write_file = {
     "type": "function",
     "function": {
         "name": "write_file",
-        "description": "Overwirtes or creates a file with the content provided",
+        "description": "Writes inside a file, if a the given file_path already exists, writes inside that file, otherwise it creates it and writes inside it",
         "parameters": {
             "type": "object",
+            "required": ["file_path", "content"],
             "properties": {
                 "file_path": {
                     "type": "string",
-                    "description": "file_path path to the files you'd like to write on",
+                    "description": "Path to the file you'd like to write on",
                 },
                 "content": {
                     "type": "string",
-                    "description": "The content you like to write over the file",
+                    "description": "The content you'd like to write inside a file as a string",
                 },
             },
         },
@@ -54,7 +57,7 @@ schema_run_python_file = {
     "type": "function",
     "function": {
         "name": "run_python_file",
-        "description": "Executes a python file with optional arguments",
+        "description": "Executes/runs a python file with optional arguments",
         "parameters": {
             "type": "object",
             "required": ["file_path"],

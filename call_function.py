@@ -3,7 +3,7 @@ from collections.abc import Callable
 from functions import get_file_content, get_files_info, write_file, run_python_file
 from functions.schemas import schema_get_files_info, schema_write_file, schema_get_file_content, schema_run_python_file
 
-available_functions = [schema_get_files_info, schema_run_python_file, schema_write_file, schema_get_file_content]
+available_functions = [schema_run_python_file, schema_write_file, schema_get_file_content, schema_get_files_info]
 
 function_map: dict[str, Callable[..., str]] = {
         "get_file_content": get_file_content.get_file_content,
